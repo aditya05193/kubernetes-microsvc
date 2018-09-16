@@ -51,7 +51,7 @@ public class OrderWebIntegrationTest {
 	public void setup() {
 		item = catalogClient.findAll().iterator().next();
 		customer = customerClient.findAll().iterator().next();
-		assertEquals("Eberhard", customer.getFirstname());
+		assertEquals("Aditya", customer.getFirstname());
 	}
 
 	@Test
@@ -63,12 +63,12 @@ public class OrderWebIntegrationTest {
 			ResponseEntity<String> resultEntity = restTemplate.getForEntity(orderURL(), String.class);
 			assertTrue(resultEntity.getStatusCode().is2xxSuccessful());
 			String orderList = resultEntity.getBody();
-			assertFalse(orderList.contains("Eberhard"));
+			assertFalse(orderList.contains("Aditya"));
 			Order order = new Order(customer.getCustomerId());
 			order.addLine(42, item.getItemId());
 			orderRepository.save(order);
 			orderList = restTemplate.getForObject(orderURL(), String.class);
-			assertTrue(orderList.contains("Eberhard"));
+			assertTrue(orderList.contains("Aditya"));
 		} finally {
 			orderRepository.deleteAll();
 		}
