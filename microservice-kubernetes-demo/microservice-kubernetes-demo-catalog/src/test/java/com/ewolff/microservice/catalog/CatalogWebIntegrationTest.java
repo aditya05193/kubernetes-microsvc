@@ -32,22 +32,22 @@ public class CatalogWebIntegrationTest {
 	@LocalServerPort
 	private int serverPort;
 
-	private Item iPodNano;
+	private Item iPhone;
 
 	private RestTemplate restTemplate;
 
 	@Before
 	public void setup() {
-		iPodNano = itemRepository.findByName("iPod nano").get(0);
+		iPhone = itemRepository.findByName("iPhone").get(0);
 		restTemplate = new RestTemplate();
 	}
 
 	@Test
 	public void IsItemReturnedAsHTML() {
-		String url = catalogURL() + "/" + iPodNano.getId() + ".html";
+		String url = catalogURL() + "/" + iPhone.getId() + ".html";
 		String body = getForMediaType(String.class, MediaType.TEXT_HTML, url);
 
-		assertThat(body, containsString("iPod nano"));
+		assertThat(body, containsString("iPhone"));
 		assertThat(body, containsString("<div"));
 	}
 
@@ -57,10 +57,10 @@ public class CatalogWebIntegrationTest {
 
 	@Test
 	public void IsItemReturnedAsJON() {
-		String url = catalogURL() + "/catalog/" + iPodNano.getId();
+		String url = catalogURL() + "/catalog/" + iPhone.getId();
 		Item body = getForMediaType(Item.class, MediaType.APPLICATION_JSON, url);
 
-		assertThat(body, equalTo(iPodNano));
+		assertThat(body, equalTo(iPhone));
 	}
 
 	@Test
@@ -74,10 +74,10 @@ public class CatalogWebIntegrationTest {
 
 	@Test
 	public void SearchWorks() {
-		String url = catalogURL() + "/searchByName.html?query=iPod";
+		String url = catalogURL() + "/searchByName.html?query=iPhone";
 		String body = restTemplate.getForObject(url, String.class);
 
-		assertThat(body, containsString("iPod nano"));
+		assertThat(body, containsString("iPhone"));
 		assertThat(body, containsString("<div"));
 	}
 
