@@ -22,10 +22,10 @@ public class CustomerApp {
 
 	@PostConstruct
 	public void generateTestData() {
-		customerRepository
-				.save(new Customer("Eberhard", "Wolff", "eberhard.wolff@gmail.com", "Unter den Linden", "Berlin"));
-		customerRepository.save(new Customer("Rod", "Johnson", "rod@somewhere.com", "Market Street", "San Francisco"));
-	}
+                customerRepository.save(new Customer("Aditya", "kumar", "aditya05193@gmail.com", "Hinjewadi", "Pune"));
+		customerRepository.save(new Customer("Gaurav", "T.", "gaurav.t@gmail.com", "Wakad", "Pune"));
+                customerRepository.save(new Customer("Devendra", "brahmankar", "devendra.brahmankar@gmail.com", "Wakad", "Pune"));
+        }
 
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerApp.class, args);
