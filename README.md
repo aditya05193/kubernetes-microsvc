@@ -49,11 +49,9 @@ Kubernetes does the load balancing on the IP level.
 
 The microservices have a Java main application in `src/test/java` to
 run them stand alone. `microservice-demo-order` uses a stub for the
-other services then. Also there are tests that use _consumer-driven
-contracts_. That is why it is ensured that the services provide the
-correct interface. These CDC tests are used in microservice-demo-order
-to verify the stubs. In `microservice-kubernetes-demo-customer` and
-`microserivce-kubernetes-demo-catalog` they are used to verify the implemented
+other services then. 
+
+In `microservice-kubernetes-demo-customer` and `microserivce-kubernetes-demo-catalog` they are used to verify the implemented
 REST services.
 
 Netflix Hystrix:
