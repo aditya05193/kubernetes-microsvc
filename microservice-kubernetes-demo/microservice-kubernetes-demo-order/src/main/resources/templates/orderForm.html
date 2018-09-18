@@ -14,7 +14,7 @@
 					name="selectCustomer" th:field="*{customerId}">
 					<option th:each="customer : ${customers}"
 						th:text="${customer.firstname}+' '+${customer.name}"
-						th:value="${customer.customerId}" value="42" >Rod Johnson</option>
+						th:value="${customer.customerId}" value="42" >Aditya kumar</option>
 				</select>
 			</div>
 			<div class="row">
@@ -39,7 +39,7 @@
 					<select
 						th:field="*{orderLine[__${orderLineStat.index}__].itemId}">
 						<option th:each="item : ${items}" th:text="${item.name}"
-							th:value="${item.itemId}" value="42" >MacBook</option>
+							th:value="${item.itemId}" value="42" >iPhone</option>
 					</select>
 				</div>
 			</div>
